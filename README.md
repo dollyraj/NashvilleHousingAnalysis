@@ -7,26 +7,35 @@ This project bridges the gap between raw database engineering and commercial dec
 1. **Data Cleaning & Schema Evolution:** Methodically transformed unstandardized records into an analytics-ready dimensional model in MySQL.
 2. **Exploratory Data Analysis (EDA):** Answered critical commercial questions around market appreciation, renovation ROI, distressed asset discounts, and institutional investor exposure.
 
-Column Profiling:
-UniqueID
-ParcelID
-LandUse
-PropertyAddress
-SaleDate
-SalePrice
-LegalReference
-SoldAsVacant
-OwnerName
-OwnerAddress
-Acreage
-TaxDistrict
-LandValue
-BuildingValue
-TotalValue
-YearBuilt
-Bedrooms
-FullBath
-HalfBath
+### Column Profiling
+
+| Column Name | Data Type | Description |
+|:---|:---|:---|
+| `UniqueID` | BIGINT | Unique surrogate key for each record |
+| `ParcelID` | VARCHAR | Parcel identifier across sales |
+| `LandUse` | VARCHAR | Zoning/property type (Single Family, Condo, etc.) |
+| `PropertyAddress` | VARCHAR | Physical street address and city |
+| `SaleDate` | VARCHAR | Date property was sold |
+| `SalePrice` | VARCHAR | Recorded sale price in USD |
+| `LegalReference` | VARCHAR | County deed/transfer legal filing code |
+| `SoldAsVacant` | VARCHAR | Vacancy status flag (`Yes`/`No`) |
+| `OwnerName` | VARCHAR | Property owner/entity name |
+| `OwnerAddress` | VARCHAR | Tax mailing address of the owner |
+| `Acreage` | DOUBLE | Lot size in acres |
+| `TaxDistrict` | VARCHAR | Municipal tax jurisdiction |
+| `LandValue` | DOUBLE | Assessed tax value of the land |
+| `BuildingValue` | DOUBLE | Assessed tax value of the building/structure |
+| `TotalValue` | DOUBLE | Total assessed tax value (`Land + Building`) |
+| `YearBuilt` | DOUBLE | Year the structure was constructed |
+| `Bedrooms` | DOUBLE | Bedroom count |
+| `FullBath` | DOUBLE | Full bathroom count |
+| `HalfBath` | DOUBLE | Half bathroom count |
+
+**Concept Used:**
+`Data Cleaning`
+`Aggregation`
+`Windows Function`
+`Exploratory Data Analysis`
 
 **Data Cleaning & Pipeline Steps**
 Date Standardization: Converted varied text formats ('%M %e, %Y') to ISO standard DATE objects (YYYY-MM-DD).
