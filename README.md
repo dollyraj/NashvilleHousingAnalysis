@@ -37,14 +37,14 @@ This project bridges the gap between raw database engineering and commercial dec
 `Windows Function`
 `Exploratory Data Analysis`
 
-**Data Cleaning & Pipeline Steps**
-Date Standardization: Converted varied text formats ('%M %e, %Y') to ISO standard DATE objects (YYYY-MM-DD).
+**Data Cleaning Steps**
+`Date Standardization`: Converted varied text formats ('%M %e, %Y') to ISO standard DATE objects (YYYY-MM-DD).
 
-Parcel Address Imputation: Resolved missing PropertyAddress fields by performing a deterministic self-join matching on identical ParcelID records (COALESCE(a.PropertyAddress, b.PropertyAddress)).
+`Adding Parcel Address`: Resolved missing PropertyAddress fields by performing a deterministic self-join matching on identical ParcelID records (COALESCE(a.PropertyAddress, b.PropertyAddress)).
 
-Delimiter String Splitting: Extracted atomic address, city, and state attributes from composite address strings using SUBSTRING_INDEX() and TRIM().
+`Delimiter String Splitting`: Extracted atomic address, city, and state attributes from composite address strings using SUBSTRING_INDEX() and TRIM().
 
-Categorical Normalization: Cleaned binary SoldAsVacant flags by mapping non-standard 'Y'/'N' values into standard 'Yes'/'No'.
+`Categorical Normalization`: Cleaned binary SoldAsVacant flags by mapping non-standard 'Y'/'N' values into standard 'Yes'/'No'.
 
 
 **Business Scenarios, Key Metrics & Analytical Findings**
@@ -53,42 +53,52 @@ Business Question: How has overall market pricing expanded year-over-year, and w
 
 Analytical Finding:
 
-Average prices accelerated from $244,577 in 2013 to $398,653 in 2015, yielding consecutive YoY growth of +36.65% (2014) and +19.28% (2015).
+Average prices accelerated from $244,549.69 in 2013 to $398,622.37 in 2015, yielding consecutive YoY growth of +36.64% (2014) and +19.29% (2015).
 
-Summer represents 31.3% of annual liquidity, with June peaking at 6,593 sales ($222,505 median). Winter transaction volume declines by >44% (February recorded just 2,778 sales), making late winter the optimal acquisition window for discounts.
+Summer represents peak season, with June peaking at 6,593 sales. Winter transaction volume declines  (February recorded just 2,778 sales), making late winter the optimal window for discounts.
 
 2. Geographic Liquidity & Land Asset Share
 Business Question: Which submarkets dominate liquidity, and where does raw dirt comprise the highest asset value?
 
 Analytical Finding:
 
-Nashville proper commands 71.3% of county transactions (40,270 sales; average price $366,349), where land accounts for 30.56% of assessed value.
+Nashville proper commands 71.3% of county transactions (40,280 sales; average price $366,246), where land accounts for 30.56% of assessed value.
 
-Suburban enclave Brentwood commands large parcel acreage (1.32 acres avg) and elevated valuations ($312,258 avg), with land value driving 35.15% of the asset basis. Madison ($136,502 avg) serves as the primary budget entry market.
+Suburban enclave Brentwood commands large parcel acreage (1.32 acres avg) and elevated valuations ($312,258 avg), with land value driving 35.15% of the asset basis. Madison ($136,480 avg) serves as the primary budget entry market.
 
 3. Room Configurations & Renovation Value-Add
 Business Question: Does capital investment generate higher returns by adding an extra bedroom or an additional full bathroom?
 
 Analytical Finding:
 
-For standard single-family starter homes, upgrading from 3 Bed / 1 Bath ($172,973 avg) to 3 Bed / 2 Bath ($231,663 avg) produces a +$58,689 (+33.9%) price lift.
+For standard single-family starter homes, upgrading from 3 Bed / 1 Bath ($172,973 avg) to 3 Bed / 2 Bath ($231,595 avg) produces a +$58,622 (+33.9%) price lift.
 
-Adding a 4th bedroom without a bathroom upgrade (4 Bed / 1 Bath) yields only +$18,500 (+12.5%). In the Nashville metro, bathroom capacity drives more than double the marginal value of raw bedroom partitioning.
+Adding a 4th bedroom without a bathroom upgrade (4 Bed / 1 Bath) ($ 197,306 avg) yields only +$24,333 (+14.06%). In the Nashville metro, bathroom capacity drives more than double the marginal value of raw bedroom partitioning.
 
 4. Distressed Asset Arbitrage 
 Business Question: Do vacant single-family properties trade at a measurable discount relative to tax appraisals?
 
 Analytical Finding:
 
-Occupied single-family homes sold at an average of $281,716 (1.15x assessed value).
+Occupied single-family homes sold at an average of $281,691 (1.15x assessed value).
 
 Vacant single-family homes sold at an average of $197,056 against an average assessed tax value of $431,099—a 30.1% discount against occupied stock and an acquisition ratio of 0.46x assessed value (liquidating at over 50% below municipal appraisal).
 
 5. Institutional Penetration & Absentee Ownership
-Business Question: What proportion of housing inventory is held by non-owner occupants and corporate institutions?
+Business Question: What proportion of housing inventory is Private property?
 
 Analytical Finding:
 
-19.52% of all single-family parcels are owned by absentee investors whose billing tax address differs from the physical property.
+88.08% of all property are Private propwerties and only 11.92% is owned by corporate property.
 
-Absentee investors purchased properties at an average price of $310,846 vs. $273,506 for owner-occupiers (+13.65% price premium), confirming that investor capital actively targeted upper-tier, turn-key rental stock.
+**Top Ten Landlords and Developers Porfolio:**
+`HILL 33, LLC`
+`JRG PROPERTIES, LLC`
+`FED DEVELOPMENT, LLC`
+`SUMMEY, CLARENCE`
+`KHAZANOV, MAX`
+`KUDZU REAL ESTATE, INC.`
+`URBANGATE DEVELOPMENT GROUP, LLC`
+`WOODLAND STREET PARTNERS, LLC`
+`NASH 2 SF, LLC`
+`DEEP RIVER DEVELOPMENT, LLC`
