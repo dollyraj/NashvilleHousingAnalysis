@@ -10,6 +10,9 @@ This project bridges the gap between raw database engineering and commercial dec
 
 ---
 
+### Data Load
+Python is used to load data from csv to MySQL workbench.
+
 ### Column Profiling
 
 | Column Name | Data Type | Description |
